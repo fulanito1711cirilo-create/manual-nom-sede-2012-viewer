@@ -1,0 +1,950 @@
+<script type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>
+<script type="text/javascript">
+    new QWebChannel(qt.webChannelTransport, function(channel) {
+        window.canal = channel.objects.canal;
+    });
+
+    function abrir(clave) {
+        canal.abrir_articulo(clave);
+    }
+</script>
+
+<!-- Botón de regreso al índice -->
+<button id="btnIndice" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+  Índice
+</button>
+
+<!-- Botón de regreso al índice -->
+<button id="btnIndice" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+  Índice
+</button>
+
+<style>
+  #btnIndice {
+    position: fixed;
+    bottom: 20px; /* lo fija abajo */
+    left: 20px;   /* esquina izquierda */
+    z-index: 1000;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  #btnIndice:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Memoria Técnica NOM-001-SEDE-2012</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 20px; background: #fdfdfd; }
+    h1, h2, h3 { margin-top: 15px; }
+    .bloque {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bloque">
+  <h1>Memoria Técnica de Instalaciones Eléctricas</h1>
+  <p><em>Basada en la NOM-001-SEDE-2012</em></p>
+</div>
+
+<!-- Bloque de índice -->
+<div class="indice">
+  <h2>Índice</h2>
+  <ul>
+    <li><a href="#bloque1">1. Portada y datos generales</a></li>
+    <li><a href="#bloque2">2. Marco normativo y referencias</a></li>
+    <li><a href="#bloque3">3. Descripción del inmueble y del proyecto</a></li>
+    <li><a href="#bloque4">4. Condiciones de diseño</a></li>
+    <li><a href="#bloque5">5. Cálculo de cargas eléctricas</a></li>
+    <li><a href="#bloque6">6. Alimentadores y conductores</a></li>
+    <li><a href="#bloque7">7. Canalizaciones</a></li>
+    <li><a href="#bloque8">8. Protecciones eléctricas</a></li>
+    <li><a href="#bloque9">9. Sistemas de puesta a tierra y pararrayos</a></li>
+    <li><a href="#bloque10">10. Tableros eléctricos</a></li>
+    <li><a href="#bloque11">11. Transformadores y subestaciones</a></li>
+    <li><a href="#bloque12">12. Sistemas especiales</a></li>
+    <li><a href="#bloque13">13. Diagramas eléctricos</a></li>
+    <li><a href="#bloque14">14. Memorias de cálculo</a></li>
+    <li><a href="#bloque15">15. Especificaciones técnicas</a></li>
+    <li><a href="#bloque16">16. Conclusiones y firma responsable</a></li>
+  </ul>
+</div>
+
+
+<div class="bloque"id="bloque1">
+  <h2>1. Portada y datos generales</h2>
+  <ul>
+    <li>Nombre del proyecto</li>
+    <li>Ubicación</li>
+    <li>Propietario/cliente</li>
+    <li>Proyectista responsable</li>
+    <li>Fecha</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque2">
+  <h2>2. Marco normativo y referencias</h2>
+  <ul>
+    <li>NOM-001-SEDE-2012</li>
+    <li>PEC-NOM-001-SEDE-2012</li>
+    <li>Otras NOM aplicables</li>
+    <li>Normas internacionales de referencia</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque3">
+  <h2>3. Descripción del inmueble y del proyecto</h2>
+  <ul>
+    <li>Tipo de inmueble</li>
+    <li>Niveles y superficie</li>
+    <li>Uso principal y secundarios</li>
+    <li>Condiciones de ocupación</li>
+    <li>Requerimientos especiales</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque4">
+  <h2>4. Condiciones de diseño</h2>
+  <ul>
+    <li>Altitud y temperatura</li>
+    <li>Condiciones climáticas</li>
+    <li>Sistema de suministro eléctrico</li>
+    <li>Nivel de tensión disponible</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque5">
+  <h2>5. Cálculo de cargas eléctricas</h2>
+
+  <!-- Inventario de cargas -->
+  <h3 id="inventario-cargas">Inventario de cargas</h3>
+  <p>Definición: Es la suma de las potencias nominales de todos los equipos y dispositivos eléctricos previstos en el inmueble (alumbrado, contactos, equipos fijos, motores, HVAC, etc.).</p>
+  <p>Base normativa: <a href="javascript:abrir('art220')">Art. 220-1 a 220-18</a></p>
+
+  <p>Qué se debe incluir:</p>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Tipo de carga</th>
+        <th>Norma</th>
+        <th>Base / Consideraciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alumbrado general</td>
+        <td><a href="javascript:abrir('art220-12')">220-12</a></td>
+        <td>33 VA/m² en viviendas y locales de uso general. Industrial: según área.</td>
+      </tr>
+      <tr>
+        <td>Contactos de uso general</td>
+        <td><a href="javascript:abrir('art220-14')">220-14</a></td>
+        <td>180 VA por salida.</td>
+      </tr>
+      <tr>
+        <td>Circuitos especiales en viviendas</td>
+        <td><a href="javascript:abrir('art220-52')">220-52</a></td>
+        <td>2 circuitos de pequeños aparatos de 1500 VA c/u, 1 circuito de lavandería de 1500 VA.</td>
+      </tr>
+      <tr>
+        <td>Aparatos de uso específico</td>
+        <td><a href="javascript:abrir('art220-18')">220-18</a></td>
+        <td>Estufas, hornos, bombas, calentadores, compresores. Usar placa de datos.</td>
+      </tr>
+      <tr>
+        <td>Motores</td>
+        <td><a href="javascript:abrir('art430')">430</a>, <a href="javascript:abrir('art220-50')">220-50</a></td>
+        <td>Carga plena de placa. Si hay varios motores, 125% del motor mayor + 100% de los demás.</td>
+      </tr>
+      <tr>
+        <td>Aire acondicionado / refrigeración</td>
+        <td><a href="javascript:abrir('art440')">440</a>, <a href="javascript:abrir('art220-50')">220-50</a>, <a href="javascript:abrir('art220-51')">220-51</a></td>
+        <td>Se toma la mayor carga entre climatización o calefacción eléctrica.</td>
+      </tr>
+      <tr>
+        <td>Otros equipos especiales</td>
+        <td>Según aplique</td>
+        <td>Generadores, transformadores, capacitores, albercas, sistemas fotovoltaicos, eólicos, celdas de combustible.</td>
+      </tr>
+    </tbody>
+  </table>
+<h3>Tabla 220-3: Referencias para el cálculo de carga adicional</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+  <caption>Tabla 220-3.- Referencias para el cálculo de carga adicional</caption>
+  <thead>
+    <tr>
+      <th>Cálculo</th>
+      <th>Artículo</th>
+      <th>Sección o Parte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alimentadores de tableros de distribución en escenarios - teatros</td>
+      <td>520</td>
+      <td><a href="javascript:abrir('art520-27')">520-27</a></td>
+    </tr>
+    <tr>
+      <td>Bases de cálculo - estacionamientos de vehículos recreativos</td>
+      <td>551</td>
+      <td><a href="javascript:abrir('art551-73')">551-73</a> (a)</td>
+    </tr>
+    <tr>
+      <td>Caída de tensión (cálculo obligatorio) - bombas contra incendios</td>
+      <td>695</td>
+      <td><a href="javascript:abrir('art695-7')">695-7</a></td>
+    </tr>
+    <tr>
+      <td>Caída de tensión (cálculo obligatorio) - equipo eléctrico sensible</td>
+      <td>647</td>
+      <td><a href="javascript:abrir('art647-4')">647-4</a> (d)</td>
+    </tr>
+    <tr>
+      <td>Cálculos de circuitos derivados de más de 600 volts</td>
+      <td>210</td>
+      <td><a href="javascript:abrir('art210-19')">210-19</a> (b)</td>
+    </tr>
+    <tr>
+      <td>Cálculos de la ampacidad - soldadores eléctricos</td>
+      <td>630</td>
+      <td>
+        <a href="javascript:abrir('art630-11')">630-11</a>, 
+        <a href="javascript:abrir('art630-31')">630-31</a>
+      </td>
+    </tr>
+    <tr>
+      <td>Cálculos de la carga del alimentador y de acometida – marinas y muelles</td>
+      <td>555</td>
+      <td><a href="javascript:abrir('art555-12')">555-12</a></td>
+    </tr>
+    <tr>
+      <td>Cálculos del alimentador de más de 600 volts</td>
+      <td>215</td>
+      <td><a href="javascript:abrir('art215-2')">215-2</a> (b)</td>
+    </tr>
+    <tr>
+      <td>Calentadores de agua tipo almacenamiento</td>
+      <td>422</td>
+      <td><a href="javascript:abrir('art422-11')">422-11</a> (e)</td>
+    </tr>
+    <tr>
+      <td>Capacidad nominal y tamaño - los conductores de grúas y montacargas eléctricos</td>
+      <td>610</td>
+      <td><a href="javascript:abrir('art610-14')">610-14</a></td>
+    </tr>
+    <tr>
+      <td>Carga total para determinar el suministro de energía - casas móviles, casas prefabricadas y estacionamientos de casas móviles</td>
+      <td>550</td>
+      <td><a href="javascript:abrir('art550-18')">550-18</a> (b)</td>
+    </tr>
+    <tr>
+      <td>Conductores - convertidores de fase</td>
+      <td>455</td>
+      <td><a href="javascript:abrir('art455-6')">455-6</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado de los conductores del alimentador para escenarios en estudios de televisión - Estudios de cine, de televisión y lugares similares</td>
+      <td>530</td>
+      <td><a href="javascript:abrir('art530-19')">530-19</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado del circuito derivado - equipos eléctricos fijos de calefacción para tuberías y recipientes</td>
+      <td>427</td>
+      <td><a href="javascript:abrir('art427-4')">427-4</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado del circuito derivado - equipos eléctricos fijos para calefacción de ambiente</td>
+      <td>424</td>
+      <td><a href="javascript:abrir('art424-3')">424-3</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado del circuito derivado - equipos eléctricos fijos exteriores para deshielo y fusión de nieve</td>
+      <td>426</td>
+      <td><a href="javascript:abrir('art426-4')">426-4</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado del circuito y corriente - sistemas solares fotovoltaicos</td>
+      <td>690</td>
+      <td><a href="javascript:abrir('art690-8')">690-8</a></td>
+    </tr>
+    <tr>
+      <td>Dimensionado del conductor de alimentación - maquinaria industrial</td>
+      <td>670</td>
+      <td><a href="javascript:abrir('art670-4')">670-4</a> (a)</td>
+    </tr>
+    <tr>
+      <td>Dimensionado del conductor del circuito derivado - equipos de aire acondicionado y de refrigeración</td>
+      <td>440</td>
+      <td>Parte D</td>
+    </tr>
+    <tr>
+      <td>Dimensionado del conductor del circuito derivado - galvanoplastia</td>
+      <td>669</td>
+      <td><a href="javascript:abrir('art669-5')">669-5</a></td>
+    </tr>
+    <tr>
+      <td>Equipos de carga combinada, de motores y de motores múltiples</td>
+      <td>430</td>
+      <td><a href="javascript:abrir('art430-25')">430-25</a></td>
+    </tr>
+    <tr>
+      <td>Espacios electrificados para estacionamiento de camiones</td>
+      <td>626</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>Factores de demanda del alimentador - elevadores</td>
+      <td>620</td>
+      <td><a href="javascript:abrir('art620-14')">620-14</a></td>
+    </tr>
+    <tr>
+      <td>Factores de demanda del alimentador - motores</td>
+      <td>430</td>
+      <td><a href="javascript:abrir('art430-26')">430-26</a></td>
+    </tr>
+    <tr>
+      <td>Factores de demanda permisibles para sistemas de alambrado eléctrico en estacionamientos - casas móviles, casas prefabricadas y estacionamientos de casas móviles</td>
+      <td>550</td>
+      <td><a href="javascript:abrir('art550-31')">550-31</a></td>
+    </tr>
+    <tr>
+      <td>Líneas - celdas electrolíticas</td>
+      <td>668</td>
+      <td><a href="javascript:abrir('art668-3')">668-3</a> (c)</td>
+    </tr>
+    <tr>
+      <td>Máquinas de riego accionadas o controladas eléctricamente</td>
+      <td>675</td>
+      <td>
+        <a href="javascript:abrir('art675-7')">675-7</a> (a), 
+        <a href="javascript:abrir('art675-22')">675-22</a> (a)
+      </td>
+    </tr>
+    <tr>
+      <td>Motores, varios motores o un(os) motor(es) y otra(s) carga(s)</td>
+      <td>430</td>
+      <td><a href="javascript:abrir('art430-24')">430-24</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+  <!-- Demanda máxima -->
+  <h3 id="demanda-maxima">Demanda máxima</h3>
+  <p>Determinación de la corriente nominal:</p>
+  <p>Trifásico: <code>I = P / (√3 ∙ V ∙ FP)</code></p>
+  <p>Monofásico: <code>I = P / (V ∙ FP)</code></p>
+  <p>Donde:</p>
+  <ul>
+    <li>I = Corriente nominal (A)</li>
+    <li>P = Potencia demandada (W)</li>
+    <li>V = Tensión de línea (V)</li>
+    <li>FP = Factor de potencia</li>
+  </ul>
+
+  <p>Carga total en kVA:</p>
+  <ol>
+    <li>Suma de todas las cargas demandadas (alumbrado, contactos, fuerza, HVAC, etc.)</li>
+    <li>Convertir a kVA considerando FP global: <code>kVA = kW / FP</code></li>
+    <li>Valor base para dimensionamiento de alimentadores, transformadores y protecciones principales.</li>
+  </ol>
+
+  <h4>Ejemplo práctico resumido</h4>
+  <div style="background:#eef6ff;padding:10px;margin:10px 0;border-left:5px solid #0645AD;">
+    <strong>Ejemplo:</strong>
+    <ul>
+      <li>Motores: 100 kW, FP = 0.85 → kVA = 117.6</li>
+      <li>Alumbrado: 20 kW, FP = 0.95 → kVA = 21.1</li>
+      <li>Resistencias: 10 kW, FP = 1.0 → kVA = 10</li>
+    </ul>
+    <p>Total kW = 130, Total kVA = 148.7, FP global = 0.87 → Se requiere corrección para ≥ 0.9 (<a href="javascript:abrir('art215')">Art. 215</a>).</p>
+  </div>
+</section>
+
+
+</div>
+
+<div class="bloque"id="bloque6">
+ <h2>6. Alimentadores y conductores</h2>
+
+<h3>6.1 Selección del calibre de conductor</h3>
+<ol>
+  <li>Buscar la ampacidad base en 
+      <a href="javascript:abrir('tab310-15b16')">Tabla 310-15(b)(16)</a> según tipo de aislamiento y temperatura.
+  </li>
+  <li>Aplicar factores de corrección:
+    <ul>
+      <li>Por temperatura ambiente: 
+        <a href="javascript:abrir('tab310-15b2b')">Art. 310-15(b)(2)(b)</a> 
+        (ajuste según temperatura donde se instala el equipo)
+      </li>
+      <li>Por número de conductores en la canalización: 
+        <a href="javascript:abrir('tab310-15b3a')">Art. 310-15(b)(3)(a)</a> 
+        (considerar si pasan más de 4 conductores portadores de corriente)
+      </li>
+    </ul>
+  </li>
+</ol>
+<pre>
+Ampacidad corregida = Ampacidad base × FT × FA
+</pre>
+<p>Donde:</p>
+<ul>
+  <li><b>FT</b> = factor de corrección por temperatura</li>
+  <li><b>FA</b> = factor de ajuste por número de conductores</li>
+</ul>
+
+<h3>6.2 Verificación de la caída de tensión</h3>
+<pre>
+Trifásico: ΔV(%) = (√3 × I × Rlong / Vnominal) × 100
+Monofásico: ΔV(%) = (2 × I × Rlong / Vnominal) × 100
+</pre>
+<p>Requisitos según NOM-001-SEDE-2012: 
+<a href="javascript:abrir('art210-19')">Art. 210-19</a>, <a href="javascript:abrir('art215-2')">Art. 215-2(a)(3)</a></p>
+<ul>
+  <li>≤ 3% por circuito derivado o alimentador</li>
+  <li>≤ 5% total (acometida + alimentador + circuito)</li>
+</ul>
+
+<h3>6.3 Selección de aislamiento</h3>
+<ul>
+  <li><b>THW:</b> PVC, humedad, 75°C</li>
+  <li><b>THHN/THWN:</b> PVC + Nylon, 90°C seco / 75°C húmedo</li>
+  <li><b>XHHW:</b> Polietileno, mejor resistencia mecánica, 90°C</li>
+</ul>
+<p>Verificar compatibilidad con condiciones ambientales. Norma: <a href="javascript:abrir('art310')">Art. 310</a></p>
+
+<h3>6.4 Colores e identificación de conductores</h3>
+<p>Norma: <a href="javascript:abrir('art200')">Art. 200</a> y <a href="javascript:abrir('art210')">Art. 210</a></p>
+<ul>
+  <li>Neutro: blanco o gris</li>
+  <li>Tierra: verde o verde/amarillo</li>
+  <li>Fases: cualquier otro color</li>
+</ul>
+<p>Para trifásico: recomendado usar negro, rojo, azul (baja tensión); marrón, naranja, amarillo (480 V)</p>
+
+<h3>6.5 Consideraciones adicionales</h3>
+<ul>
+  <li>Verificar agrupamiento de circuitos y efecto en la ampacidad</li>
+  <li>Revisar longitud máxima del alimentador (caída de tensión)</li>
+  <li>Documentar calibre final, material, aislamiento y ampacidad corregida</li>
+</ul>
+
+</div>
+
+<div class="bloque"id="bloque7">
+  <h2>7. Canalizaciones</h2>
+
+  <h3>1. Tipos de Canalizaciones</h3>
+  <p>La selección del tipo de canalización depende del ambiente de instalación, la protección mecánica requerida y el tipo de conductor. Según la <a href="javascript:abrir('nom001')">NOM-001-SEDE-2012</a>:</p>
+
+  <ul>
+    <li>
+      <strong>Tubo conduit metálico ligero (EMT)</strong> – <a href="javascript:abrir('art358')">Art. 358</a><br>
+      <em>Uso:</em> Instalaciones interiores y exteriores con protección mecánica moderada.<br>
+      <em>Característica:</em> Flexible y ligero, fácil de curvar y fijar.
+    </li>
+    <li>
+      <strong>Tubo conduit metálico semipesado (IMC)</strong> – <a href="javascript:abrir('art342')">Art. 342</a><br>
+      <em>Uso:</em> Áreas donde se requiere mayor protección mecánica.<br>
+      <em>Característica:</em> Más robusto que EMT, ideal para instalaciones industriales o exteriores expuestas a golpes.
+    </li>
+    <li>
+      <strong>Tubo conduit rígido de PVC</strong> – <a href="javascript:abrir('art352')">Art. 352</a><br>
+      <em>Uso:</em> Ambientes húmedos o corrosivos, interiores y exteriores.<br>
+      <em>Característica:</em> Resistente a químicos, corrosión y rayos UV, no conductor.
+    </li>
+    <li>
+      <strong>Charolas portacables</strong> – <a href="javascript:abrir('art392')">Art. 392</a><br>
+      <em>Uso:</em> Soporte y organización de cables en instalaciones industriales.<br>
+      <em>Característica:</em> Facilita el tendido de múltiples conductores y permite inspección visual.
+    </li>
+    <li>
+      <strong>Bandejas y canales auxiliares</strong> – <a href="javascript:abrir('art366')">Art. 366</a><br>
+      <em>Uso:</em> Agrupamiento de cables de potencia, control, instrumentación y fibra óptica.<br>
+      <em>Característica:</em> Canales abiertos que facilitan modificaciones y mantenimiento.
+    </li>
+  </ul>
+
+  <p><strong>Recomendación práctica:</strong> En memoria técnica, especificar el tipo de canalización según ubicación y ambiente, indicando material, dimensiones y accesorios utilizados.</p>
+
+  <h3>2. Ocupación Máxima de Conductores</h3>
+  <p>Para garantizar seguridad y evitar sobrecalentamiento, la norma establece un factor de llenado máximo:</p>
+  <p><em>Fórmula de ocupación:</em> <a href="javascript:abrir('cap9tablas')">Cap. 9, Tablas 1 y 4</a></p>
+  <pre>
+∑A<sub>conductores</sub> ≤ fr · A<sub>canalización</sub>
+  </pre>
+  <ul>
+    <li><strong>∑A<sub>conductores</sub></strong> = suma de áreas de todos los conductores instalados</li>
+    <li><strong>fr</strong> = factor de llenado (40% para canalizaciones abiertas, 20% para ductos verticales)</li>
+    <li><strong>A<sub>canalización</sub></strong> = área interna disponible del conduit, charola o bandeja</li>
+  </ul>
+  <p><strong>Práctica recomendada:</strong> Calcular el área de cada conductor usando la sección nominal y verificar que no se exceda el factor de llenado.</p>
+
+  <h3>3. Radios de Curvatura y Fijaciones</h3>
+  <p>Para proteger los conductores y garantizar facilidad de instalación:</p>
+  <p><strong>Radio mínimo de curvatura:</strong> <a href="javascript:abrir('art352')">Art. 352</a>, <a href="javascript:abrir('art358')">Art. 358</a>, <a href="javascript:abrir('art392')">Art. 392</a></p>
+  <pre>
+R<sub>min</sub> ≥ 5 · D<sub>externo</sub> del conduit
+  </pre>
+  <ul>
+    <li>R<sub>min</sub> = radio mínimo de curvatura</li>
+    <li>D = diámetro exterior del tubo o charola</li>
+  </ul>
+
+  <p><strong>Fijaciones y soportes:</strong></p>
+  <ul>
+    <li>EMT e IMC: ≤ 3 m horizontal, ≤ 3 m vertical</li>
+    <li>Charolas y bandejas: ≤ 2 m o según peso del conductor</li>
+    <li><a href="javascript:abrir('art392')">Art. 392</a> y <a href="javascript:abrir('art366')">Art. 366</a>: soportes deben resistir el peso total del cableado más cargas adicionales</li>
+  </ul>
+  <p><strong>Práctica:</strong> Indicar tipo de soporte, distancia entre fijaciones y método de anclaje en la memoria técnica.</p>
+
+  <h3>4. Consideraciones para Ambientes Industriales</h3>
+  <p>En entornos industriales, las canalizaciones deben proteger a los conductores de factores adversos:</p>
+  <ul>
+    <li><strong>Humedad y químicos</strong> – <a href="javascript:abrir('art352')">Art. 352</a>, <a href="javascript:abrir('art358')">Art. 358</a><br>
+      Preferir PVC industrial o IMC para resistir corrosión química. Evitar conduits metálicos en ambientes ácidos sin protección adicional.
+    </li>
+    <li><strong>Áreas clasificadas</strong> – <a href="javascript:abrir('art500')">Art. 500-516</a><br>
+      Uso de cables y canalizaciones aprobadas para riesgo de explosión (MC-HL, MI, ITC-HL). Accesorios deben contar con certificación para área clasificada.
+    </li>
+    <li><strong>Protección mecánica adicional</strong> – <a href="javascript:abrir('art392')">Art. 392</a>, <a href="javascript:abrir('art366')">Art. 366</a><br>
+      Canalizaciones expuestas a golpes, vibraciones o tránsito vehicular deben reforzarse con conduits pesados o bandejas cerradas.
+    </li>
+  </ul>
+
+  <p><strong>Recomendación:</strong> Documentar en la memoria técnica los criterios de selección según ambiente: humedad, químicos, impacto, temperatura y clasificación de riesgo.</p>
+</div>
+
+<div class="bloque"id="bloque8">
+  <h2>7. Protecciones eléctricas</h2>
+
+  <h3>7.1 Selección de interruptores termomagnéticos</h3>
+  <p>Según el <a href="javascript:abrir('art240')">Artículo 240</a> de la NOM-001-SEDE-2012, la protección contra sobrecorriente se instala para abrir el circuito si la corriente alcanza valores peligrosos para los conductores o su aislamiento.</p>
+<h3>Tabla 240-3.- Otros artículos</h3>
+<p>El equipo se debe proteger contra sobrecorriente de acuerdo con el Artículo de esta NOM que cubre el tipo de equipo que se especifica en la Tabla 240-3.</p>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Equipo</th>
+      <th>Artículo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Acometidas</td>
+      <td><a href="javascript:abrir('art230')">230</a></td>
+    </tr>
+    <tr>
+      <td>Anuncios eléctricos e iluminación de contorno</td>
+      <td><a href="javascript:abrir('art600')">600</a></td>
+    </tr>
+    <tr>
+      <td>Aparatos</td>
+      <td><a href="javascript:abrir('art422')">422</a></td>
+    </tr>
+    <tr>
+      <td>Elevadores, elevadores montaplatos, escaleras y pasillos móviles; elevadores para sillas de ruedas y elevadores de sillas de ruedas para escaleras</td>
+      <td><a href="javascript:abrir('art620')">620</a></td>
+    </tr>
+    <tr>
+      <td>Bombas contra incendios</td>
+      <td><a href="javascript:abrir('art695')">695</a></td>
+    </tr>
+    <tr>
+      <td>Capacitores</td>
+      <td><a href="javascript:abrir('art460')">460</a></td>
+    </tr>
+    <tr>
+      <td>Celdas electrolíticas</td>
+      <td><a href="javascript:abrir('art668')">668</a></td>
+    </tr>
+    <tr>
+      <td>Circuitos de Clase 1, Clase 2 y Clase 3 de control remoto, de señalización y de potencia limitada</td>
+      <td><a href="javascript:abrir('art725')">725</a></td>
+    </tr>
+    <tr>
+      <td>Circuitos derivados</td>
+      <td><a href="javascript:abrir('art210')">210</a></td>
+    </tr>
+    <tr>
+      <td>Contactos, conectores de cordón y clavijas de conexión</td>
+      <td><a href="javascript:abrir('art406')">406</a></td>
+    </tr>
+    <tr>
+      <td>Convertidores de fase</td>
+      <td><a href="javascript:abrir('art455')">455</a></td>
+    </tr>
+    <tr>
+      <td>Electroductos</td>
+      <td><a href="javascript:abrir('art368')">368</a></td>
+    </tr>
+    <tr>
+      <td>Equipo de aire acondicionado y refrigeración</td>
+      <td><a href="javascript:abrir('art440')">440</a></td>
+    </tr>
+    <tr>
+      <td>Equipo de calefacción eléctrica fija de tuberías y recipientes</td>
+      <td><a href="javascript:abrir('art427')">427</a></td>
+    </tr>
+    <tr>
+      <td>Equipo de calentamiento dieléctrico y por inducción</td>
+      <td><a href="javascript:abrir('art665')">665</a></td>
+    </tr>
+    <tr>
+      <td>Equipo eléctrico exterior fijo de deshielo y fusión de la nieve</td>
+      <td><a href="javascript:abrir('art426')">426</a></td>
+    </tr>
+    <tr>
+      <td>Equipo eléctrico fijo de calefacción de ambiente</td>
+      <td><a href="javascript:abrir('art424')">424</a></td>
+    </tr>
+    <tr>
+      <td>Equipos de procesamiento, amplificación y reproducción de señal de audio</td>
+      <td><a href="javascript:abrir('art640')">640</a></td>
+    </tr>
+    <tr>
+      <td>Equipos de rayos X</td>
+      <td><a href="javascript:abrir('art660')">660</a></td>
+    </tr>
+    <tr>
+      <td>Estudios de cine y de televisión y lugares similares</td>
+      <td><a href="javascript:abrir('art530')">530</a></td>
+    </tr>
+    <tr>
+      <td>Generadores</td>
+      <td><a href="javascript:abrir('art445')">445</a></td>
+    </tr>
+    <tr>
+      <td>Grúas y polipastos</td>
+      <td><a href="javascript:abrir('art610')">610</a></td>
+    </tr>
+    <tr>
+      <td>Instalaciones en lugares de atención de la salud</td>
+      <td><a href="javascript:abrir('art517')">517</a></td>
+    </tr>
+    <tr>
+      <td>Lugares de reunión</td>
+      <td><a href="javascript:abrir('art518')">518</a></td>
+    </tr>
+    <tr>
+      <td>Luminarias, portalámparas y lámparas</td>
+      <td><a href="javascript:abrir('art410')">410</a></td>
+    </tr>
+    <tr>
+      <td>Maquinaria industrial</td>
+      <td><a href="javascript:abrir('art670')">670</a></td>
+    </tr>
+    <tr>
+      <td>Motores, circuitos de motores y controladores</td>
+      <td><a href="javascript:abrir('art430-31')">430-31</a></td>
+    </tr>
+    <tr>
+      <td>Órganos eléctricos de tubos</td>
+      <td><a href="javascript:abrir('art650')">650</a></td>
+    </tr>
+    <tr>
+      <td>Sistemas de alarma contra incendios</td>
+      <td><a href="javascript:abrir('art760')">760</a></td>
+    </tr>
+    <tr>
+      <td>Sistemas de emergencia</td>
+      <td><a href="javascript:abrir('art700')">700</a></td>
+    </tr>
+    <tr>
+      <td>Sistemas solares fotovoltaicos</td>
+      <td><a href="javascript:abrir('art690')">690</a></td>
+    </tr>
+    <tr>
+      <td>Soldadores eléctricos</td>
+      <td><a href="javascript:abrir('art630')">630</a></td>
+    </tr>
+    <tr>
+      <td>Tableros de distribución y tableros de alumbrado y control</td>
+      <td><a href="javascript:abrir('art408')">408</a></td>
+    </tr>
+    <tr>
+      <td>Teatros, áreas de espectadores en estudios cinematográficos y estudios de televisión y lugares similares</td>
+      <td><a href="javascript:abrir('art520')">520</a></td>
+    </tr>
+    <tr>
+      <td>Transformadores y bóvedas de transformadores</td>
+      <td><a href="javascript:abrir('art450')">450</a></td>
+    </tr>
+  </tbody>
+</table>
+
+  <p>Los interruptores termomagnéticos deben seleccionarse tomando en cuenta:</p>
+  <ul>
+    <li>Capacidad nominal adecuada a la ampacidad del conductor que protegen.</li>
+    <li>Para cargas continuas: corriente nominal ≤ 125% de la corriente de carga máxima; para motores ≤ 150% (coordinación conductor-protección).</li>
+    <li>Cumplir límites de temperatura de terminales y factores de corrección por temperatura ambiente o condiciones especiales de uso.</li>
+  </ul>
+
+  <p><b>Fórmula de selección básica:</b></p>
+  <pre>
+In ≤ 1.25 · Ic   (cargas continuas)
+In ≤ 1.5  · Im   (motores)
+  </pre>
+  <ul>
+    <li><b>In</b> = corriente nominal del interruptor</li>
+    <li><b>Ic</b> = corriente de carga continua</li>
+    <li><b>Im</b> = corriente nominal del motor</li>
+  </ul>
+    <p>Valores comerciales de ITMs: <a href="javascript:abrir('art240-6')">Art. 240-6</a></p>
+
+  <h3>7.2 Coordinación conductor-protección</h3>
+  <p>Los conductores deben soportar la corriente máxima permitida y coordinarse con el dispositivo de protección:</p>
+  <ul>
+    <li>Conductores protegidos ≥ 125% de la corriente máxima calculada (o 100% si el dispositivo está diseñado para operación continua).</li>
+    <li>Conductores de motores y alimentadores especiales según <a href="javascript:abrir('art430')">Art. 430</a> y <a href="javascript:abrir('art450')">Art. 450</a>.</li>
+    <li>Para sistemas fotovoltaicos con múltiples tensiones: el conductor de retorno común ≥ suma de corrientes nominales de cada protección individual.</li>
+  </ul>
+  <p><b>Fórmula:</b></p>
+  <pre>
+Ac ≥ 1.25 · Icalc
+  </pre>
+  <ul>
+    <li><b>Ac</b> = ampacidad del conductor</li>
+    <li><b>Icalc</b> = corriente máxima calculada</li>
+  </ul>
+
+  <h3>7.3 Capacidad interruptiva (kAIC)</h3>
+  <p>La capacidad de interrupción debe ser adecuada a la corriente de cortocircuito del sistema:</p>
+  <ul>
+    <li>Determinar la corriente de cortocircuito disponible (<b>Icc</b>) en el punto de instalación.</li>
+    <li>Seleccionar un dispositivo cuya capacidad de interrupción (<b>kAIC</b>) ≥ <b>Icc</b>.</li>
+  </ul>
+  <pre>
+kAICdispositivo ≥ Icc
+  </pre>
+
+  <h3>7.4 Relés de protección en media tensión e industrial</h3>
+  <ul>
+    <li>Se utilizan relés para detectar sobrecorrientes, fallas a tierra y cortocircuitos.</li>
+    <li>Deben coordinarse selectivamente con interruptores y fusibles aguas arriba y abajo.</li>
+    <li>Configurar según corriente nominal de transformadores y motores para garantizar selectividad.</li>
+  </ul>
+
+  <h3>7.5 Selección de protección para transformador y alimentador</h3>
+
+  <h4>Protección primaria</h4>
+  <p>Fusibles o interruptor en primario: ver <a href="javascript:abrir('art450-3')">Art. 450-3</a> y reglas de fusibles (<a href="javascript:abrir('art240')">Art. 240</a>).  
+  En transformadores sin protección térmica coordinada, hay límites sobre cuánto pueden superar la corriente nominal en el primario.</p>
+  <p>Valores comerciales de ITMs: <a href="javascript:abrir('art240-6')">Art. 240-6</a></p>
+
+  <h4>Protección secundaria / alimentador</h4>
+  <ul>
+    <li>Interruptor termomagnético o fusible dimensionado según <a href="javascript:abrir('art240')">Art. 240</a> y coordinación conductor-protección:
+      <ul>
+        <li>Cargas continuas: dispositivo ≤ 125% de la corriente nominal del conductor.</li>
+        <li>Motores: hasta 150% para arranque (según <a href="javascript:abrir('art430')">Art. 430</a> y <a href="javascript:abrir('art240')">Art. 240</a>).</li>
+      </ul>
+    </li>
+    <li><b>kAIC:</b> seleccionar interruptor/fusible ≥ Icc disponible.</li>
+    <li>Relés en media tensión: diseñar según condiciones de falla y coordinación selectiva (<a href="javascript:abrir('art450')">Art. 450</a> para transformador; <a href="javascript:abrir('art240')">Art. 240</a> para protecciones generales).</li>
+  </ul>
+</div>
+
+<div class="bloque" id="bloque9">
+  <h2>8. Sistemas de puesta a tierra y pararrayos</h2>
+
+  <h3>8.1 Sistema de tierras</h3>
+  <p>El sistema de puesta a tierra protege personas y equipos, limitando el potencial eléctrico de estructuras metálicas y desviando corrientes de falla hacia tierra. Según la <a href="javascript:abrir('art250')">NOM-001-SEDE-2012, Art. 250</a>:</p>
+  <ul>
+    <li>Todos los electrodos deben unirse para formar el <strong>sistema de electrodos</strong> (<a href="javascript:abrir('art250-50')">250-50</a>).</li>
+    <li>En ausencia de electrodos existentes, instalar varillas, anillos o mallas según <a href="javascript:abrir('art250-52')">250-52(a)(4) a (a)(8)</a>.</li>
+    <li>Resistencia máxima recomendada: <strong>≤ 5 Ω</strong> (máximo permitido 25 Ω).</li>
+    <li>Cada electrodo debe estar separado ≥ <strong>1.80 m</strong> de otros electrodos y de conductores de pararrayos (<a href="javascript:abrir('art250-52')">250-52</a>, <a href="javascript:abrir('art800-53')">800-53</a>).</li>
+  </ul>
+  <p><strong>Nota práctica:</strong> Medir resistencia de tierra con telurómetro al menos una vez al año o tras modificaciones importantes.</p>
+
+  <h3>8.2 Electrodos permitidos</h3>
+  <p>Según <a href="javascript:abrir('art250-52')">Art. 250-52</a>, se pueden usar:</p>
+  <ul>
+    <li><strong>Tuberías metálicas subterráneas de agua:</strong> ≥ 3 m en contacto con tierra.</li>
+    <li><strong>Acero estructural del edificio:</strong> ≥ 3 m en contacto con tierra.</li>
+    <li><strong>Varillas o tubos metálicos:</strong> longitud ≥ 2.44 m, enterrados uniformemente.</li>
+    <li><strong>Anillos de puesta a tierra:</strong> enterrados ≥ 0.75 m, rodeando la estructura.</li>
+    <li><strong>Mallas de cobre o aluminio:</strong> para sistemas de alta capacidad o industriales.</li>
+  </ul>
+  <p><strong>Recomendación:</strong> En zonas de alta resistividad, combinar varios electrodos en paralelo o malla para reducir resistencia.</p>
+
+  <h3>8.3 Conductores de puesta a tierra</h3>
+  <ul>
+    <li><strong>Conductor del electrodo:</strong> dimensionado según <a href="javascript:abrir('tabla250-66')">Tabla 250-66</a>. Ej.: cobre 13.3 mm² (6 AWG) o aluminio 21.2 mm² (4 AWG).</li>
+    <li><strong>Conductor de enlace:</strong> unir electrodos separados, cobre ≥ 13.3 mm² (6 AWG) o aluminio equivalente según <a href="javascript:abrir('tabla250-102')">Tabla 250-102(c)(1)</a>.</li>
+    <li>Conexiones mediante <strong>soldadura exotérmica</strong> o conectores aprobados, resistentes a corrosión y de baja impedancia.</li>
+  </ul>
+  <p><strong>Fórmula de referencia:</strong></p>
+  <pre style="font-family:monospace; background:#f8f8f8; padding:6px; border-radius:6px;">
+I<sub>falla</sub> = V<sub>suministro</sub> / R<sub>tierra</sub>
+  </pre>
+  <ul>
+    <li><strong>I<sub>falla</sub></strong>: Corriente que circularía por el conductor de tierra [A]</li>
+    <li><strong>V<sub>suministro</sub></strong>: Voltaje línea-neutro [V]</li>
+    <li><strong>R<sub>tierra</sub></strong>: Resistencia total del sistema [Ω]</li>
+  </ul>
+  <p>Esto permite estimar la <strong>ampacidad mínima</strong> del conductor de puesta a tierra.</p>
+
+  <h3>8.4 Pararrayos y SPDs</h3>
+  <ul>
+    <li><strong>Pararrayos:</strong> conectar al sistema de electrodos, manteniendo separación ≥ 1.80 m de otros electrodos.</li>
+    <li><strong>Conductores de bajada:</strong> cobre ≥ 13.3 mm² (6 AWG) o aluminio 21.2 mm² (4 AWG), recorridos directos, sin curvas cerradas.</li>
+    <li><strong>SPDs (dispositivos de protección contra sobretensiones):</strong> conectar al sistema de tierra y seleccionar según:
+      <ul>
+        <li>Nivel de sobretensión esperado.</li>
+        <li>Corriente de descarga nominal (I<sub>n</sub>).</li>
+        <li>Coordinación SPDs nivel 1 (entrada), nivel 2 (tableros), nivel 3 (cargas sensibles).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>8.5 Recomendaciones prácticas</h3>
+  <ul>
+    <li><strong>Puentes de unión:</strong> todos los electrodos deben estar interconectados para limitar diferencias de potencial (<a href="javascript:abrir('art250-50')">250-50</a>).</li>
+    <li><strong>Protección mecánica:</strong> conductores enterrados o expuestos deben protegerse con canalizaciones, cubiertas o tubos de PVC.</li>
+    <li><strong>Verificación periódica:</strong> medir resistencia a tierra, continuidad de conductores y revisar conexiones al menos una vez por año.</li>
+    <li><strong>Equipos industriales:</strong> cada tablero, motor y equipo metálico debe conectarse a un conductor de puesta a tierra con ampacidad adecuada para la corriente de falla.</li>
+    <li><strong>Diseño avanzado:</strong> en instalaciones críticas (hospitales, centros de datos), usar mallas equipotenciales y sistemas redundantes de puesta a tierra.</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque10">
+  <h2>9. Tableros eléctricos</h2>
+  <ul>
+    <li>Tableros principal y seccionales</li>
+    <li>Diagrama unifilar</li>
+    <li>Cuadro de cargas por tablero</li>
+    <li>Capacidad nominal</li>
+  </ul>
+</div>
+
+<div class="bloque" id="bloque11">
+  <h2>10. Transformadores y subestaciones</h2>
+
+  <h3>10.1 Potencia y nivel de tensión</h3>
+  <p>Se debe dimensionar el transformador considerando la carga total demandada y un factor de crecimiento futuro:</p>
+  <ul>
+    <li><strong>Cálculo de carga demandada:</strong> sumar todas las cargas de la instalación (kW o kVA) por circuito y aplicar factores de demanda según Tablas <a href="javascript:abrir('tab220-42')">220-42</a>, <a href="javascript:abrir('tab220-54')">220-54</a> y <a href="javascript:abrir('tab220-55')">220-55</a> (<a href="javascript:abrir('art220')">Art. 220</a>).</li>
+    <li><strong>Selección de potencia:</strong> aplicar factor de crecimiento: <code>S_sel = Carga_demandada × (1 + f_crecimiento)</code>. Ej.: 150 kVA × 1.2 → 180 kVA.</li>
+    <li><strong>Nivel de tensión:</strong> seleccionar según necesidades del sistema y compatibilidad con la red existente.</li>
+  </ul>
+
+  <h3>10.2 Esquema de conexión</h3>
+  <ul>
+    <li><strong>Tipo de conexión:</strong> Estrella-estrella, estrella-triángulo, delta-delta, según norma y requisitos de la instalación (<a href="javascript:abrir('art450')">Art. 450</a>).</li>
+    <li><strong>Secuencia de fases:</strong> mantener consistencia con los alimentadores para evitar desbalance.</li>
+    <li><strong>Neutro:</strong> determinar necesidad de neutro solidamente aterrizado o aislado según la aplicación.</li>
+  </ul>
+
+  <h3>10.3 Factor de potencia</h3>
+  <ul>
+    <li>Determinar factor de potencia promedio de la carga.</li>
+    <li>Si es necesario, considerar bancos de capacitores para corrección de factor de potencia y reducción de pérdidas.</li>
+  </ul>
+
+  <h3>10.4 Corriente nominal del secundario (alimentador)</h3>
+  <p>Calcular según el transformador seleccionado:</p>
+  <ul>
+    <li>Trifásico: <code>I_sec = (S_sel × 1000) / (√3 × V_sec)</code></li>
+    <li>Monofásico: <code>I_sec = (S_sel × 1000) / V_sec</code></li>
+    <li>Esta corriente servirá para dimensionar conductores y protecciones de alimentación (<a href="javascript:abrir('art215')">Art. 215</a>, <a href="javascript:abrir('art310')">Art. 310</a>).</li>
+  </ul>
+
+  <h3>10.5 Ubicación y ventilación</h3>
+  <ul>
+    <li>Instalar transformadores en lugares ventilados, secos y libres de polvo excesivo.</li>
+    <li>Evitar lugares de tránsito y accesos restringidos para facilitar mantenimiento y seguridad.</li>
+    <li>Proporcionar espacio mínimo alrededor del transformador para disipación de calor y acceso de personal.</li>
+    <li>En subestaciones interiores, considerar conductos de ventilación o sistemas de enfriamiento si la temperatura ambiente supera límites de operación.</li>
+  </ul>
+
+  <h3>10.6 Protecciones y seguridad</h3>
+  <ul>
+    <li>Interruptores termomagnéticos o fusibles en primario y secundario según <a href="javascript:abrir('art240')">Art. 240</a> y coordinación conductor-protección.</li>
+    <li>Protecciones diferenciales para neutro si aplica.</li>
+    <li>Sistemas de puesta a tierra conectados al neutro y carcasa metálica para protección contra fallas.</li>
+  </ul>
+
+  <h3>10.7 Consideraciones adicionales</h3>
+  <ul>
+    <li>Documentar características del transformador: marca, tipo, potencia, conexión, nivel de tensión y factor de potencia.</li>
+    <li>Registrar corrientes nominales, temperatura máxima de operación y capacidad de interrupción (kAIC) de protecciones.</li>
+    <li>Indicar mantenimiento programado y pruebas periódicas de aislamiento y puesta a tierra.</li>
+  </ul>
+</div>
+
+
+<div class="bloque"id="bloque12">
+  <h2>11. Sistemas especiales</h2>
+  <ul>
+    <li>Sistemas de emergencia</li>
+    <li>Alumbrado de emergencia</li>
+    <li>Bombas contra incendio</li>
+    <li>Elevadores</li>
+    <li>Automatización</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque13">
+  <h2>12. Diagramas eléctricos</h2>
+  <ul>
+    <li>Diagrama unifilar general</li>
+    <li>Diagramas de control</li>
+    <li>Planos de distribución</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque14">
+  <h2>13. Memorias de cálculo</h2>
+  <ul>
+    <li>Demanda total y máxima</li>
+    <li>Cálculo de conductores</li>
+    <li>Cálculo de protecciones</li>
+    <li>Caída de tensión</li>
+    <li>Transformadores y generadores</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque15">
+  <h2>14. Especificaciones técnicas</h2>
+  <ul>
+    <li>Materiales eléctricos</li>
+    <li>Normas de calidad</li>
+    <li>Métodos de instalación</li>
+  </ul>
+</div>
+
+<div class="bloque"id="bloque16">
+  <h2>15. Conclusiones y firma responsable</h2>
+  <ul>
+    <li>Resumen del proyecto</li>
+    <li>Cumplimiento normativo</li>
+    <li>Firma y cédula profesional</li>
+  </ul>
+</div>
+
+</body>
+</html>
