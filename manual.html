@@ -448,8 +448,184 @@ Monofásico: ΔV(%) = (2 × I × Rlong / Vnominal) × 100
   <li>Revisar longitud máxima del alimentador (caída de tensión)</li>
   <li>Documentar calibre final, material, aislamiento y ampacidad corregida</li>
 </ul>
-
 </div>
+
+<!-- ===================================================== 
+     CALCULADORA DE CAÍDA DE TENSIÓN (Basada en Tabla 9 NOM-001-SEDE-2012)
+===================================================== -->
+<div class="bloque" id="bloque-caida-tension">
+  <h2>Calculadora de Caída de Tensión</h2>
+  <p>Basada en la <a href="javascript:abrir('tab9')">Tabla 9</a> de la NOM-001-SEDE-2012 (3 fases, 60 Hz, 75 °C).</p>
+
+  <select id="tipoCircuito">
+    <option value="mono2">Monofásico 2 hilos</option>
+    <option value="mono3">Monofásico 3 hilos</option>
+    <option value="trifasico">Trifásico</option>
+  </select>
+
+  <select id="material">
+    <option value="cobre">Cobre</option>
+    <option value="aluminio">Aluminio</option>
+  </select>
+
+  <select id="conduit">
+    <option value="PVC">PVC</option>
+    <option value="Aluminio">Aluminio</option>
+    <option value="Acero">Acero</option>
+  </select>
+
+  <select id="calibre">
+    <option value="14">14</option>
+    <option value="12">12</option>
+    <option value="10">10</option>
+    <option value="8">8</option>
+    <option value="6">6</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+    <option value="1/0">1/0</option>
+    <option value="2/0">2/0</option>
+    <option value="3/0">3/0</option>
+    <option value="4/0">4/0</option>
+    <option value="250">250</option>
+    <option value="300">300</option>
+    <option value="350">350</option>
+    <option value="400">400</option>
+    <option value="500">500</option>
+    <option value="600">600</option>
+    <option value="750">750</option>
+    <option value="1000">1000</option>
+  </select>
+
+  <input id="L" type="number" placeholder="Longitud (m)">
+  <input id="I" type="number" placeholder="Corriente (A)">
+  <input id="V" type="number" placeholder="Voltaje entre fase y fase (V)">
+  <input id="fp" type="number" step="0.01" placeholder="Factor de potencia" value="0.85">
+  <input id="Cf" type="number" step="1" placeholder="Conductores por fase" value="1">
+
+  <div>
+  <label>R (Ω/km):</label> 
+  <input id="R" type="number" step="0.0001" placeholder="Valor manual o automático">
+  <label>X (Ω/km):</label> 
+  <input id="X" type="number" step="0.0001" placeholder="Valor manual o automático">
+</div>
+
+
+  <button onclick="calcular()">Calcular</button>
+  <div id="resultado"></div>
+
+  <script>
+    // === TABLA 9 NOM-001-SEDE-2012 ===
+    const tabla9 = {
+      cobre: {
+        "14": { X_pvc_al: 0.190, X_acero: 0.240, R_pvc: 10.2, R_al: 10.2, R_acero: 10.2 },
+        "12": { X_pvc_al: 0.177, X_acero: 0.223, R_pvc: 6.6,  R_al: 6.6,  R_acero: 6.6 },
+        "10": { X_pvc_al: 0.164, X_acero: 0.207, R_pvc: 3.9,  R_al: 3.9,  R_acero: 3.9 },
+        "8":  { X_pvc_al: 0.171, X_acero: 0.213, R_pvc: 2.56, R_al: 2.56, R_acero: 2.56 },
+        "6":  { X_pvc_al: 0.167, X_acero: 0.210, R_pvc: 1.61, R_al: 1.61, R_acero: 1.61 },
+        "4":  { X_pvc_al: 0.157, X_acero: 0.197, R_pvc: 1.02, R_al: 1.02, R_acero: 1.02 },
+        "3":  { X_pvc_al: 0.154, X_acero: 0.194, R_pvc: 0.82, R_al: 0.82, R_acero: 0.82 },
+        "2":  { X_pvc_al: 0.148, X_acero: 0.187, R_pvc: 0.62, R_al: 0.66, R_acero: 0.66 },
+        "1":  { X_pvc_al: 0.151, X_acero: 0.187, R_pvc: 0.49, R_al: 0.52, R_acero: 0.52 },
+        "1/0":{ X_pvc_al: 0.144, X_acero: 0.180, R_pvc: 0.39, R_al: 0.43, R_acero: 0.39 },
+        "2/0":{ X_pvc_al: 0.141, X_acero: 0.177, R_pvc: 0.33, R_al: 0.33, R_acero: 0.33 },
+        "3/0":{ X_pvc_al: 0.138, X_acero: 0.171, R_pvc: 0.253, R_al: 0.269, R_acero: 0.259 },
+        "4/0":{ X_pvc_al: 0.135, X_acero: 0.167, R_pvc: 0.203, R_al: 0.220, R_acero: 0.207 },
+        "250":{ X_pvc_al: 0.135, X_acero: 0.171, R_pvc: 0.171, R_al: 0.187, R_acero: 0.177 },
+        "300":{ X_pvc_al: 0.135, X_acero: 0.167, R_pvc: 0.144, R_al: 0.161, R_acero: 0.148 },
+        "350":{ X_pvc_al: 0.131, X_acero: 0.164, R_pvc: 0.125, R_al: 0.141, R_acero: 0.128 },
+        "400":{ X_pvc_al: 0.131, X_acero: 0.161, R_pvc: 0.108, R_al: 0.125, R_acero: 0.115 },
+        "500":{ X_pvc_al: 0.128, X_acero: 0.157, R_pvc: 0.089, R_al: 0.105, R_acero: 0.095 },
+        "600":{ X_pvc_al: 0.128, X_acero: 0.157, R_pvc: 0.075, R_al: 0.092, R_acero: 0.082 },
+        "750":{ X_pvc_al: 0.125, X_acero: 0.157, R_pvc: 0.062, R_al: 0.079, R_acero: 0.069 },
+        "1000":{X_pvc_al: 0.121, X_acero: 0.151, R_pvc: 0.049, R_al: 0.062, R_acero: 0.059 }
+      }
+    };
+
+    const FACTOR_R_ALUMINIO = 1.62;
+
+    function obtenerValoresRX(material, conduit, calibre) {
+      const datos = tabla9.cobre[String(calibre)];
+      if (!datos) return null;
+
+      const X = (conduit === "Acero") ? datos.X_acero : datos.X_pvc_al;
+
+      let R_base;
+      if (conduit === "PVC") R_base = datos.R_pvc;
+      else if (conduit === "Aluminio") R_base = datos.R_al;
+      else if (conduit === "Acero") R_base = datos.R_acero;
+
+      // Detectar valores vacíos (cuando en la tabla no hay datos)
+      if (R_base == null || isNaN(R_base)) return null;
+
+      if (material === "cobre") return { R: Number(R_base), X: Number(X) };
+      if (material === "aluminio") return { R: Number((R_base * FACTOR_R_ALUMINIO).toFixed(4)), X: Number(X) };
+      return null;
+    }
+
+    function actualizarValores() {
+  const material = materialEl.value;
+  const conduit = conduitEl.value;
+  const calibre = calibreEl.value;
+  const datos = obtenerValoresRX(material, conduit, calibre);
+
+  if (!datos) {
+    resultadoDiv.innerHTML = "⚠️ No hay datos disponibles para esa combinación.";
+    return;
+  }
+
+  // Solo actualiza automáticamente si el usuario NO ha escrito manualmente
+  if (!REl.matches(':focus')) REl.value = datos.R.toFixed(4);
+  if (!XEl.matches(':focus')) XEl.value = datos.X.toFixed(4);
+
+  resultadoDiv.innerHTML = `Fórmula: e = k · I · L · (R·cosφ + X·senφ)`;
+}
+
+    function calcular() {
+      const tipo = tipoEl.value, mat = materialEl.value, cond = conduitEl.value, cal = calibreEl.value;
+      const L = parseFloat(LEl.value), I = parseFloat(IEl.value), V = parseFloat(VEl.value), fp = parseFloat(fpEl.value);
+      let Cf = parseFloat(CfEl.value); if (!Cf || Cf <= 0) Cf = 1;
+
+      const datos = obtenerValoresRX(mat, cond, cal);
+      if (!datos) return resultadoDiv.innerHTML = "⚠️ No hay datos para este calibre o material.";
+
+      const R = datos.R, X = datos.X;
+      const cosT = fp, senT = Math.sin(Math.acos(cosT));
+      const Icond = I / Cf;
+      const Lkm = L / 1000;
+      const k = (tipo === "trifasico") ? 1.732 : 2;
+
+      const e = k * Icond * Lkm * (R * cosT + X * senT);
+      const porc = (e*100 )/ V;
+
+      resultadoDiv.innerHTML =
+        `<b>Resultados:</b><br>
+        R=${R.toFixed(4)} Ω/km · X=${X.toFixed(4)} Ω/km<br>
+        e=${e.toFixed(3)} V · Caída=${porc.toFixed(2)} %<br>
+        Fórmula: ΔV = ${k}×${Icond.toFixed(2)}×${Lkm.toFixed(3)}×(${R.toFixed(4)}×${cosT}+${X.toFixed(4)}×${senT.toFixed(3)})`;
+    }
+
+    // Asignar referencias y eventos
+    const materialEl = document.getElementById("material");
+    const conduitEl = document.getElementById("conduit");
+    const calibreEl = document.getElementById("calibre");
+    const resultadoDiv = document.getElementById("resultado");
+    const REl = document.getElementById("R");
+    const XEl = document.getElementById("X");
+    const tipoEl = document.getElementById("tipoCircuito");
+    const LEl = document.getElementById("L");
+    const IEl = document.getElementById("I");
+    const VEl = document.getElementById("V");
+    const fpEl = document.getElementById("fp");
+    const CfEl = document.getElementById("Cf");
+
+    materialEl.addEventListener("change", actualizarValores);
+    conduitEl.addEventListener("change", actualizarValores);
+    calibreEl.addEventListener("change", actualizarValores);
+  </script>
+</div>
+
 
 <div class="bloque"id="bloque7">
   <h2>7. Canalizaciones</h2>
@@ -795,7 +971,9 @@ kAICdispositivo ≥ Icc
   <ul>
     <li><strong>Conductor del electrodo:</strong> dimensionado según <a href="javascript:abrir('tabla250-66')">Tabla 250-66</a>. Ej.: cobre 13.3 mm² (6 AWG) o aluminio 21.2 mm² (4 AWG).</li>
     <li><strong>Conductor de enlace:</strong> unir electrodos separados, cobre ≥ 13.3 mm² (6 AWG) o aluminio equivalente según <a href="javascript:abrir('tabla250-102')">Tabla 250-102(c)(1)</a>.</li>
+    <li>Conductor (tamaño minimo para canalizaciones) <a href="javascript:abrir('tab250-1133')">Tabla 250-122</a>.</li>
     <li>Conexiones mediante <strong>soldadura exotérmica</strong> o conectores aprobados, resistentes a corrosión y de baja impedancia.</li>
+  
   </ul>
   <p><strong>Fórmula de referencia:</strong></p>
   <pre style="font-family:monospace; background:#f8f8f8; padding:6px; border-radius:6px;">

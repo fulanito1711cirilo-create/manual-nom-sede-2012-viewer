@@ -83,7 +83,9 @@ MAPA = {
     "tab430-147": 435,
     "tab430-148": 431,
     "tab310-15b3a": 186,
-    
+    "tab9": 1010,
+    "tab250-1133": 150,
+
     #Artículos adicionales del sistema de tierras
     "art250": 250,
     "art250-50": 255,
